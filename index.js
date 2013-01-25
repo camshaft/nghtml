@@ -49,9 +49,9 @@ module.exports = function(options) {
 
 function compile(html, file, module, nextLineEscape) {
   return template
+    .replace(/\{\{path\}\}/g, file)
+    .replace(/\{\{module\}\}/g, module)
     .replace(/\{\{content\}\}/g, html
       .replace(/\"/g, "\\\"")
-      .replace(/\n/g, nextLineEscape))
-    .replace(/\{\{path\}\}/g, file)
-    .replace(/\{\{module\}\}/g, module);
+      .replace(/\n/g, nextLineEscape));
 };
