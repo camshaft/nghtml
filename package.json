@@ -1,0 +1,19 @@
+{
+  "name": "nghtml",
+  "version": "0.1.0",
+  "description": "Component plugin for Angular.js Templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CamShaft/nghtml.git"
+  },
+  "keywords": [
+    "angular",
+    "component"
+  ],
+  "author": "Cameron Bytheway <cameron@nujii.com>",
+  "license": "MIT"
+}
