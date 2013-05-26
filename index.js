@@ -22,7 +22,7 @@ module.exports = function(options) {
   return function(builder) {
     builder.hook('before scripts', function(pkg){
 
-      var templates = pkg.conf.templates;
+      var templates = pkg.config.templates;
       if (!templates) return;
 
       templates.forEach(function(file){
