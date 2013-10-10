@@ -1,6 +1,6 @@
 {
   "name": "nghtml",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Component plugin for Angular.js Templates",
   "main": "index.js",
   "scripts": {
@@ -14,6 +14,6 @@
     "angular",
     "component"
   ],
-  "author": "Cameron Bytheway <cameron@nujii.com>",
+  "author": "Cameron Bytheway <cameron@theflokk.com>",
   "license": "MIT"
 }
