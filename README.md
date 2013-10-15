@@ -12,7 +12,10 @@ var nghtml = require("nghtml");
 builder.use(nghtml({
   webroot: "public",
   module: "app",
-  dev: true
+  dev: true,
+  hook: function(contents, done) {
+    return processedContents;
+  }
 }));
 
 ```
@@ -31,3 +34,6 @@ The module in which to cache the templates. Defaults to `templates`.
 
 ### dev
 Boolean value to specify dev mode. This enables next-lines on the cached tempaltes. Defaults to `false`
+
+### hook
+Function to process the html output

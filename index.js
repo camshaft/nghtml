@@ -34,8 +34,12 @@ module.exports = function(options) {
           pkg.path(file)
         );
 
+        var contents = read(pkg.path(file), 'utf8');
+
+        if (options.hook) contents = options.hook(contents);
+
         var js = compile(
-          read(pkg.path(file), 'utf8'),
+          contents,
           relativePath,
           options.module,
           nextLineEscape
