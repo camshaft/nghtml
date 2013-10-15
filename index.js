@@ -23,7 +23,7 @@ module.exports = function(options) {
   options.extension = options.extension || '.nghtml';
   options.module = options.module || 'partials';
   options.webroot = options.webroot || '';
-  options.dev = typeof options.dev == "undefined" ? false : options.dev;
+  options.dev = typeof options.dev == 'undefined' ? false : options.dev;
   options.confProp = options.confProp || 'templates';
 
   var nextLineEscape = options.dev ? "\"+\n\"" : ' ';
