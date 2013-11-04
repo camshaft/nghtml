@@ -1,6 +1,6 @@
 {
   "name": "nghtml",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Component plugin for Angular.js Templates",
   "main": "index.js",
   "scripts": {
