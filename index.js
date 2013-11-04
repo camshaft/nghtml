@@ -43,9 +43,11 @@ module.exports = function(options) {
           pkg.path(file)
         );
 
-        var contents = read(pkg.path(file), 'utf8');
+        var filename = pkg.path(file);
 
-        if (options.hook) contents = options.hook(contents);
+        var contents = read(filename, 'utf8');
+
+        if (options.hook) contents = options.hook(contents, filename);
 
         var js = compile(
           contents,
