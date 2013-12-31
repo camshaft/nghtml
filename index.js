@@ -21,7 +21,6 @@ var template = read(path.join(__dirname, 'template.js'), 'utf8');
 module.exports = function(options) {
   if (!options) options = {};
   options.extension = options.extension || '.nghtml';
-  options.module = options.module || 'partials';
   options.webroot = options.webroot || '';
   options.dev = typeof options.dev == 'undefined' ? false : options.dev;
   options.confProp = options.confProp || 'templates';
@@ -52,7 +51,7 @@ module.exports = function(options) {
         var js = compile(
           contents,
           relativePath,
-          options.module,
+          options.module || pkg.config.name,
           nextLineEscape
         );
         var newFile = path.dirname(file) + '/' + path.basename(file, options.extension) + '.js';
@@ -64,9 +63,8 @@ module.exports = function(options) {
 
 function compile(html, file, module, nextLineEscape) {
   return template
-    .replace(/\{\{path\}\}/g, '/' + file)
-    .replace(/\{\{module\}\}/g, module)
-    .replace(/\{\{content\}\}/g, html
-      .replace(/\"/g, "\\\"")
-      .replace(/\n/g, nextLineEscape));
+    .replace(/\{\{path\}\}/g, JSON.stringify('/' + file))
+    .replace(/\{\{module\}\}/g, JSON.stringify(module))
+    .replace(/\{\{content\}\}/g, JSON.stringify(html
+      .replace(/\n/g, nextLineEscape)));
 };
