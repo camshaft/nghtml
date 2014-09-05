@@ -21,6 +21,7 @@ var template = read(path.join(__dirname, 'template.js'), 'utf8');
 module.exports = function(options) {
   if (!options) options = {};
   options.extension = options.extension || '.nghtml';
+  if (!Array.isArray(options.extension)) options.extension = [options.extension];
   options.webroot = options.webroot || '';
   options.dev = typeof options.dev == 'undefined' ? false : options.dev;
   options.confProp = options.confProp || 'templates';
@@ -28,14 +29,14 @@ module.exports = function(options) {
   var nextLineEscape = options.dev ? "\"+\n\"" : ' ';
 
   return function(builder) {
-    builder.hook('before scripts', function(pkg){
+    builder.hook('before scripts', function(pkg) {
 
       var templates = (pkg.config || pkg.conf)[options.confProp];
       if (!templates) return;
 
       templates.forEach(function(file){
         var ext = path.extname(file);
-        if (options.extension !== ext) return;
+        if (!~options.extension.indexOf(ext)) return;
 
         var relativePath = path.relative(
           pkg.path(options.webroot),
